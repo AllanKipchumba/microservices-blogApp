@@ -9,9 +9,9 @@ app.post("/events", (req, res) => {
   const event = req.body;
 
   //emmit events to listeners
-  axios.post("http://localhost:4000/events", event);
-  axios.post("http://localhost:4001/events", event);
-  axios.post("http://localhost:4002/events", event);
+  axios.post("http://localhost:4000/events", event); //to post
+  axios.post("http://localhost:4001/events", event); //to comments
+  axios.post("http://localhost:4002/events", event); //to query
 
   res.send({ status: "OK" });
 });

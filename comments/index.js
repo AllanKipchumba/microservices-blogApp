@@ -18,6 +18,7 @@ app.post("/posts/:id/comments", async (req, res) => {
   const id = randomBytes(4).toString("hex");
   const { content } = req.body;
 
+  //store the comment
   const comments = commentsByPostId[req.params.id] || [];
   comments.push({ id, content });
   commentsByPostId[req.params.id] = comments;

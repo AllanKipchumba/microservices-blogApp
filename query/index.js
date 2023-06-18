@@ -12,6 +12,7 @@ app.get("/posts", (req, res) => {
   res.send(posts);
 });
 
+//listen to events
 app.post("/events", (req, res) => {
   const { type, data } = req.body;
 
