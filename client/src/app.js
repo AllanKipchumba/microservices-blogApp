@@ -4,6 +4,8 @@ import { PostList } from "./components/PostList";
 
 export default function App() {
   const [count, setCount] = useState(0);
+
+  //watch for new posts
   const isNewPost = (created) => {
     created && setCount((prev) => prev + 1);
   };

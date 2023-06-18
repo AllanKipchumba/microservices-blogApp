@@ -7,6 +7,7 @@ export const PostList = ({ refresh }) => {
   const [posts, setPosts] = useState({});
   const [count, setCount] = useState(0);
 
+  //watch for new comments
   const isNewComment = (created) => {
     created && setCount((prev) => prev + 1);
   };
@@ -14,14 +15,14 @@ export const PostList = ({ refresh }) => {
   const fetchPosts = async () => {
     const res = await axios({
       method: "get",
-      url: "http://localhost:4000/posts",
+      url: "http://localhost:4002/posts",
     });
     setPosts(res.data);
   };
 
   useEffect(() => {
     fetchPosts();
-  }, [refresh]);
+  }, [refresh, count]);
 
   const renderedPosts = Object.values(posts).map((post) => {
     return (
@@ -32,7 +33,7 @@ export const PostList = ({ refresh }) => {
       >
         <div className="card-body">
           <h3>{post.title}</h3>
-          <CommentList postID={post.id} count={count} />
+          <CommentList comments={post.comments} />
           <CommentCreate postID={post.id} isNewComment={isNewComment} />
         </div>
       </div>
