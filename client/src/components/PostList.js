@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { CommentCreate } from "./CommentCreate";
+import { CommentList } from "./CommentList";
 
 export const PostList = ({ refresh }) => {
   const [posts, setPosts] = useState({});
+  const [count, setCount] = useState(0);
 
-  console.log(refresh);
+  const isNewComment = (created) => {
+    created && setCount((prev) => prev + 1);
+  };
 
   const fetchPosts = async () => {
     const res = await axios({
@@ -27,6 +32,8 @@ export const PostList = ({ refresh }) => {
       >
         <div className="card-body">
           <h3>{post.title}</h3>
+          <CommentList postID={post.id} count={count} />
+          <CommentCreate postID={post.id} isNewComment={isNewComment} />
         </div>
       </div>
     );
