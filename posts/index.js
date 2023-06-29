@@ -42,4 +42,5 @@ app.post("/events", (req, res) => {
   res.send({});
 });
 
+//spin the server version 10
 app.listen(4000, () => console.log("Listening on port 4000"));
