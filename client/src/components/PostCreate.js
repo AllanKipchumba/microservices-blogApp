@@ -9,7 +9,7 @@ export const PostCreate = ({ isNewPost }) => {
 
     await axios({
       method: "post",
-      url: "http://posts.com/posts",
+      url: "http://posts.com/posts/create",
       data: { title },
     });
 
