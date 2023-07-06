@@ -15,7 +15,7 @@ export const PostList = ({ refresh }) => {
   const fetchPosts = async () => {
     const res = await axios({
       method: "get",
-      url: "http://localhost:4002/posts",
+      url: "http://posts.com/posts",
     });
     setPosts(res.data);
   };
