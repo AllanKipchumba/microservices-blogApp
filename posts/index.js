@@ -25,7 +25,7 @@ app.post("/posts", async (req, res) => {
   };
 
   //emmit post to event broker
-  await axios.post("http://localhost:4005/events", {
+  await axios.post("http://eventbus-srv:4005/events", {
     type: "postCreated",
     data: {
       id,
